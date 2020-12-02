@@ -1,0 +1,21 @@
+[package]
+name = "byteseeker"
+version = "0.0.0"
+authors = ["mapkts <mapkts@gmail.com>"]
+description = "Utility to seek bytes in a byte stream"
+edition = "2018"
+documentation = "https://docs.rs/byteseeker/"
+include = [
+  "src/**/*",
+  "tests/**/*",
+  "Cargo.toml",
+  "README.md",
+]
+keywords = [
+  "byte",
+  "seek",
+  "seeker",
+]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/mapkts/byteseeker/"
