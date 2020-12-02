@@ -1,6 +1,6 @@
 [package]
 name = "byteseeker"
-version = "0.0.0"
+version = "0.1.0"
 authors = ["mapkts <mapkts@gmail.com>"]
 description = "Utility to seek bytes in a byte stream"
 edition = "2018"

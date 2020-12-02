@@ -236,7 +236,7 @@ impl<'a, RS: 'a + Read + Seek> ByteSeeker<'a, RS> {
     /// let mut seeker = ByteSeeker::new(&mut cursor);
     ///
     /// assert_eq!(seeker.seek_back(b"\n\n").unwrap(), 2);
-    /// assert_eq!(seeker.seek(b"\n\n").is_err(), true);
+    /// assert_eq!(seeker.seek_back(b"\n\n").is_err(), true);
     /// ```
     pub fn seek_back(&mut self, bytes: &[u8]) -> Result<usize> {
         self.buf_seek(bytes, Dir::End)
