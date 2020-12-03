@@ -1,8 +1,8 @@
 [package]
 name = "byteseeker"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["mapkts <mapkts@gmail.com>"]
-description = "Seeking byte slices within a stream of bytes"
+description = "Utility to seek byte slices within a fixed-sized byte stream"
 edition = "2018"
 documentation = "https://docs.rs/byteseeker/"
 include = [
