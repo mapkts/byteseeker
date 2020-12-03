@@ -1,6 +1,6 @@
 # Byteseeker
 
-Utility to seeking byte slice within a fixed-sized byte stream.
+Utility to seek byte slices within a fixed-sized byte stream.
 
 [![Crates.io](https://img.shields.io/crates/v/byteseeker?style=flat-square)](https://crates.io/crates/byteseeker)
 [![Docs](https://docs.rs/byteseeker/badge.svg)](https://docs.rs/byteseeker/)
