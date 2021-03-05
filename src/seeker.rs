@@ -274,9 +274,16 @@ impl<'a, RS: 'a + Read + Seek> ByteSeeker<'a, RS> {
         let mut counter = nth;
         loop {
             let pos = self.seek(bytes)?;
-            counter -= 1;
-            if counter == 0 {
-                return Ok(pos);
+            match counter.checked_sub(1) {
+                None => {
+                    return Err(Error::new(ErrorKind::ByteNotFound));
+                }
+                Some(0) => {
+                    return Ok(pos);
+                }
+                Some(n) => {
+                    counter = n;
+                }
             }
         }
     }
@@ -312,11 +319,42 @@ impl<'a, RS: 'a + Read + Seek> ByteSeeker<'a, RS> {
         let mut counter = nth;
         loop {
             let pos = self.seek_back(bytes)?;
-            counter -= 1;
-            if counter == 0 {
-                return Ok(pos);
+            match counter.checked_sub(1) {
+                None => {
+                    return Err(Error::new(ErrorKind::ByteNotFound));
+                }
+                Some(0) => {
+                    return Ok(pos);
+                }
+                Some(n) => {
+                    counter = n;
+                }
             }
         }
+    }
+
+    /// Gets a mutable reference to the underlying reader.
+    ///
+    /// It is inadvisable to directly read from the underlying reader.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use byteseeker::ByteSeeker;
+    /// use std::io::{Cursor, Read};
+    ///
+    /// let bytes = [b'0', b'\n', b'\n', b'\n'];
+    /// let mut cursor = Cursor::new(bytes);
+    /// let mut seeker = ByteSeeker::new(&mut cursor);
+    /// assert_eq!(seeker.seek(b"\n").unwrap(), 1);
+    ///
+    /// let mut reader = seeker.get_mut();
+    /// let mut buf = Vec::new();
+    /// let _ = reader.read_to_end(&mut buf);
+    /// assert_eq!(&buf, &[b'\n', b'\n']);
+    /// ```
+    pub fn get_mut(&mut self) -> &mut RS {
+        self.inner
     }
 }
 
