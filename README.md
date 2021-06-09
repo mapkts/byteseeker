@@ -1,5 +1,10 @@
 # Byteseeker
 
+**This crate is deprecated due to poor performance, see [`aho-corasick`] or [`xfind`].**
+
+[`aho-corasick`]: https://crates.io/crates/aho-corasick
+[`xfind`]: https://crates.io/crates/xfind
+
 Utility to seek byte slices within a fixed-sized byte stream.
 
 [![Crates.io](https://img.shields.io/crates/v/byteseeker?style=flat-square)](https://crates.io/crates/byteseeker)
