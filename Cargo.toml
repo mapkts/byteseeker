@@ -1,6 +1,6 @@
 [package]
 name = "byteseeker"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["Aaron Taner <mapkts@gmail.com>"]
 description = "Utility to seek byte slices within a fixed-sized byte stream"
 edition = "2018"
